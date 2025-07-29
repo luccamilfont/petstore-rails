@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_29_132741) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_29_134819) do
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_clients_on_discarded_at"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -23,7 +25,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_29_132741) do
     t.integer "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "discarded_at"
     t.index ["client_id"], name: "index_pets_on_client_id"
+    t.index ["discarded_at"], name: "index_pets_on_discarded_at"
   end
 
   add_foreign_key "pets", "clients"

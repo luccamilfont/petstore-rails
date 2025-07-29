@@ -38,11 +38,11 @@ class PetsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to pet_url(@pet)
   end
 
-  test "should destroy pet" do
-    assert_difference("Pet.count", -1) do
-      delete pet_url(@pet)
-    end
-
+  test "should discard pet" do
+    delete pet_url(@pet)
     assert_redirected_to pets_url
+
+    @pet.reload
+    assert @pet.discarded?
   end
 end

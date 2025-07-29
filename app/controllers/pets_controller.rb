@@ -3,7 +3,7 @@ class PetsController < ApplicationController
 
   # GET /pets or /pets.json
   def index
-    @pets = Pet.all
+    @pets = Pet.kept
   end
 
   # GET /pets/1 or /pets/1.json
@@ -49,10 +49,10 @@ class PetsController < ApplicationController
 
   # DELETE /pets/1 or /pets/1.json
   def destroy
-    @pet.destroy!
+    @pet.discard
 
     respond_to do |format|
-      format.html { redirect_to pets_path, status: :see_other, notice: "Pet was successfully destroyed." }
+      format.html { redirect_to pets_path, status: :see_other, notice: "Pet was successfully discarded." }
       format.json { head :no_content }
     end
   end

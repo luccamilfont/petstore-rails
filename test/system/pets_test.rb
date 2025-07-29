@@ -40,6 +40,6 @@ class PetsTest < ApplicationSystemTestCase
     visit pet_url(@pet)
     accept_confirm { click_on "Destroy this pet", match: :first }
 
-    assert_text "Pet was successfully destroyed"
+    assert_text "Pet was successfully discarded"
   end
 end

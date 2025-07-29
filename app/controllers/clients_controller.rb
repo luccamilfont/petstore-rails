@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.kept
   end
 
   # GET /clients/1 or /clients/1.json
@@ -49,10 +49,10 @@ class ClientsController < ApplicationController
 
   # DELETE /clients/1 or /clients/1.json
   def destroy
-    @client.destroy!
+    @client.discard
 
     respond_to do |format|
-      format.html { redirect_to clients_path, status: :see_other, notice: "Client was successfully destroyed." }
+      format.html { redirect_to clients_path, status: :see_other, notice: "Client was successfully discarded." }
       format.json { head :no_content }
     end
   end
